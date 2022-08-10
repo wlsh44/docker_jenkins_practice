@@ -1,11 +1,5 @@
 FROM openjdk:latest
 
-RUN ./gradlew bootjar
+COPY ./build/libs/* app.jar
 
-WORKDIR ./build/libs
-
-COPY . app.jar
-
-EXPOSE 5000
-
-RUN java -jar app.jar
+ENTRYPOINT ["java", "-jar", "app.jar"]
